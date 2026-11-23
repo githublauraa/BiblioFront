@@ -1,0 +1,27 @@
+<section class="card">
+  <h2>Registrar Nueva Biblioteca</h2>
+
+  <form (ngSubmit)="guardar()">
+    <div class="campo">
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" name="nombre" type="text" [(ngModel)]="nuevaBiblioteca.nombre" placeholder="Ej. Biblioteca Sur" required />
+    </div>
+
+    <div class="campo">
+      <label for="direccion">Dirección:</label>
+      <input id="direccion" name="direccion" type="text" [(ngModel)]="nuevaBiblioteca.direccion" placeholder="Ej. Calle 45 # 12-30" required />
+    </div>
+
+    <div class="campo">
+      <label for="ciudad">Ciudad:</label>
+      <input id="ciudad" name="ciudad" type="text" [(ngModel)]="nuevaBiblioteca.ciudad" placeholder="Ej. Bogotá" required />
+    </div>
+
+    <button type="submit" [disabled]="guardando">
+      {{ guardando ? 'Guardando...' : 'Registrar Biblioteca' }}
+    </button>
+  </form>
+
+  <p class="exito" *ngIf="mensaje">{{ mensaje }}</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
+</section>

@@ -1,0 +1,32 @@
+<section class="card">
+  <div class="header-tabla">
+    <h2>Libros Registrados por Biblioteca</h2>
+    <button type="button" (click)="cargarLibros()">Actualizar</button>
+  </div>
+
+  <p *ngIf="cargando">Cargando libros...</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <table *ngIf="!cargando && libros.length > 0">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Año</th>
+        <th>Biblioteca</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let libro of libros">
+        <td>{{ libro.titulo }}</td>
+        <td>{{ libro.autor }}</td>
+        <td>{{ libro.anioPublicacion }}</td>
+        <td>{{ libro.nombreBiblioteca }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!cargando && libros.length === 0 && !error">
+    No hay libros registrados aún.
+  </p>
+</section>
